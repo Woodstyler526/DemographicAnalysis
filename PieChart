@@ -1,0 +1,38 @@
+# Imports
+import pandas as pd
+import numpy as num
+import matplotlib.pyplot as plt
+
+# Load the data file
+data_file = pd.read_excel('/Users/tylerwoods/Desktop/Demographics.xlsx')
+
+# Variables
+name = data_file["Name"]
+gender = data_file["Gender"]
+age = data_file["Age"]
+college = data_file["College"]
+interest = data_file["Interest"]
+demographic = data_file["Demo"]
+
+
+# Converts String category into numeric values
+df = pd.DataFrame(data_file)
+
+def tran_college(x):
+    if x == "Yes":
+        return 1
+    if x == "No":
+        return 0
+
+C = df["Trans_College"] = df["College"].apply(tran_college)
+
+
+# Plots our pie chart
+plt.figure(figsize=(6,6))
+
+labels = (gender)
+values = C
+
+
+plt.pie(values, labels=labels)
+plt.show()
